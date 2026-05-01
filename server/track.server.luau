@@ -21,6 +21,8 @@ ps.PlayerAdded:Connect(function(p)
     local hrp = ch:WaitForChild("HumanoidRootPart")
     local hmd = ch:WaitForChild("Humanoid")
 
+    local saved_WS = hmd.WalkSpeed
+
     while on_check do
         
         local hrp_pos = hrp.Position
@@ -29,7 +31,7 @@ ps.PlayerAdded:Connect(function(p)
 
         local current_hrp_pos = hrp.Position
 
-        if math.abs((current_hrp_pos - hrp_pos).Magnitude) > hmd.WalkSpeed * 5 then
+        if math.abs((current_hrp_pos - hrp_pos).Magnitude) > saved_WS * 5 then
             
             uyu.kick(p, "public_reason")
             -- uyu.punish(p.UserId, year, "private_reason", "public_reason", true)
